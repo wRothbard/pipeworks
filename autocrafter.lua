@@ -1,6 +1,11 @@
 local S = minetest.get_translator("pipeworks")
 local autocrafterCache = {}  -- caches some recipe data to avoid to call the slow function minetest.get_craft_result() every second
 
+default.get_hotbar_bg = forms.get_hotbar_bg
+default.gui_bg     = ""
+default.gui_bg_img = ""
+default.gui_slots  = ""
+
 local craft_time = 1
 
 local function count_index(invlist)
@@ -180,10 +185,10 @@ local function update_meta(meta, enabled)
 			"image_button[3,2;1,0.6;pipeworks_button_" .. state .. ".png;" .. state .. ";;;false;pipeworks_button_interm.png]" ..
 			"list[context;src;0,4.5;8,3;]"..
 			"list[context;dst;4,0;4,3;]"..
-			default.gui_bg..
-			default.gui_bg_img..
-			default.gui_slots..
-			default.get_hotbar_bg(0,8) ..
+			-- default.gui_bg..
+			-- default.gui_bg_img..
+			-- default.gui_slots..
+			-- forms.get_hotbar_bg(0,8) ..
 			"list[current_player;main;0,8;8,4;]" ..
 			"listring[current_player;main]"..
 			"listring[context;src]" ..

@@ -8,6 +8,18 @@ pipeworks = {}
 
 local DEBUG = false
 
+default = {}
+default.node_sound_metal_defaults = function () return music.sounds.nodes.metal end
+default.node_sound_stone_defaults = function () return music.sounds.nodes.stone end
+default.node_sound_wood_defaults = function () return music.sounds.nodes.wood end
+default.get_hotbar_bg = forms.get_hotbar_bg
+default.gui_bg     = ""
+default.gui_bg_img = ""
+default.gui_slots  = ""
+
+minetest.register_alias("default:steel_ingot", "steel:ingot")
+minetest.register_alias("default:mese_crystal", "mese:crystal")
+
 pipeworks.worldpath = minetest.get_worldpath()
 pipeworks.modpath = minetest.get_modpath("pipeworks")
 local S = minetest.get_translator("pipeworks")
@@ -116,14 +128,14 @@ dofile(pipeworks.modpath.."/item_transport.lua")
 dofile(pipeworks.modpath.."/flowing_logic.lua")
 dofile(pipeworks.modpath.."/crafts.lua")
 dofile(pipeworks.modpath.."/tube_registration.lua")
-dofile(pipeworks.modpath.."/routing_tubes.lua")
-dofile(pipeworks.modpath.."/sorting_tubes.lua")
-dofile(pipeworks.modpath.."/vacuum_tubes.lua")
-dofile(pipeworks.modpath.."/signal_tubes.lua")
-dofile(pipeworks.modpath.."/decorative_tubes.lua")
-dofile(pipeworks.modpath.."/filter-injector.lua")
+-- dofile(pipeworks.modpath.."/routing_tubes.lua")
+-- dofile(pipeworks.modpath.."/sorting_tubes.lua")
+-- dofile(pipeworks.modpath.."/vacuum_tubes.lua")
+-- dofile(pipeworks.modpath.."/signal_tubes.lua")
+-- dofile(pipeworks.modpath.."/decorative_tubes.lua")
+-- dofile(pipeworks.modpath.."/filter-injector.lua")
 dofile(pipeworks.modpath.."/trashcan.lua")
-dofile(pipeworks.modpath.."/wielder.lua")
+-- dofile(pipeworks.modpath.."/wielder.lua")
 
 local logicdir = "/pressure_logic/"
 
@@ -135,18 +147,18 @@ dofile(pipeworks.modpath..logicdir.."abms.lua")
 dofile(pipeworks.modpath..logicdir.."abm_register.lua")
 dofile(pipeworks.modpath..logicdir.."flowable_node_registry_install.lua")
 
-if pipeworks.enable_pipes then dofile(pipeworks.modpath.."/pipes.lua") end
-if pipeworks.enable_teleport_tube then dofile(pipeworks.modpath.."/teleport_tube.lua") end
-if pipeworks.enable_pipe_devices then dofile(pipeworks.modpath.."/devices.lua") end
-if pipeworks.enable_redefines then
-	dofile(pipeworks.modpath.."/compat-chests.lua")
-	dofile(pipeworks.modpath.."/compat-furnaces.lua")
-end
+-- if pipeworks.enable_pipes then dofile(pipeworks.modpath.."/pipes.lua") end
+-- if pipeworks.enable_teleport_tube then dofile(pipeworks.modpath.."/teleport_tube.lua") end
+-- if pipeworks.enable_pipe_devices then dofile(pipeworks.modpath.."/devices.lua") end
+-- if pipeworks.enable_redefines then
+	-- dofile(pipeworks.modpath.."/compat-chests.lua")
+	-- dofile(pipeworks.modpath.."/compat-furnaces.lua")
+-- end
 if pipeworks.enable_autocrafter then dofile(pipeworks.modpath.."/autocrafter.lua") end
-if pipeworks.enable_lua_tube and
-		(minetest.get_modpath("mesecons") or minetest.get_modpath("digilines")) then
-	dofile(pipeworks.modpath.."/lua_tube.lua")
-end
+-- if pipeworks.enable_lua_tube and
+		-- (minetest.get_modpath("mesecons") or minetest.get_modpath("digilines")) then
+	-- dofile(pipeworks.modpath.."/lua_tube.lua")
+-- end
 
 minetest.register_alias("pipeworks:pipe", "pipeworks:pipe_110000_empty")
 
